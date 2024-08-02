@@ -4,8 +4,11 @@ import { useState } from "react";
 const key = "ec8e7367787030cd437f1f6f9a39159d";
 
 function App() {
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState();
   const [data, setData] = useState();
+  const run = (e) => {
+    setCity(e.target.value);
+  };
   const fetchdata = async () => {
     try {
       const responce = await axios.get(
@@ -27,7 +30,7 @@ function App() {
           className="input"
           placeholder="Enter the City name"
           value={city}
-          onChange={(e) => setCity(e.target.value)}
+          onChange={run}
         />
         <div>
           <br />
